@@ -1,34 +1,197 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    margin: 0;
+    overflow: hidden;
 }
 
-.container {
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
 }
 
-button {
-    font-size: 16px;
+#game-title {
+    font-size: 3em;
+}
+
+#cookie-btn {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+#cookie-btn img {
+    width: 200px;
+    height: 200px;
+    transition: transform 0.1s;
+}
+
+#cookie-btn img.pulse {
+    animation: pulse 0.2s;
+}
+
+.cookie-counter {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cookie-counter p {
+    margin: 5px 0;
+    font-size: 1.5em;
+}
+
+.cookie-counter hr {
+    border: 0;
+    border-top: 2px solid #000;
+    margin: 5px 0;
+}
+
+.toggle-button {
+    margin-top: 20px;
+    background-color: #fff;
+    border: none;
     padding: 10px 20px;
-    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.toggle-button.pulse {
+    animation: pulse-small 0.2s;
+}
+
+#toggle-investing {
+    background-color: #ddd;
+    position: relative;
+}
+
+#toggle-investing:hover::after {
+    content: "Costs 100,000 cookies";
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+#toggle-investing:disabled {
+    cursor: not-allowed;
+}
+
+.upgrades-tab {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.upgrades-tab.open {
+    transform: translateY(0);
+}
+
+.investing-tab {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    background-color: #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.investing-tab.open {
+    transform: translateY(0);
+}
+
+.upgrades-container, .investing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.upgrades-container button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    width: calc(100% / 4 - 20px); /* Adjust this value based on the desired number of buttons per row */
+    box-sizing: border-box;
     cursor: pointer;
     border: none;
-    background-color: transparent;
-}
-
-button img {
-    width: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
 }
 
-.upgrades {
-    margin-top: 20px;
+.falling-cookies {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensure clicks pass through the falling cookies */
+    z-index: -1; /* Place behind the main content */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes pulse-small {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.falling-cookie {
+    position: absolute;
+    top: -50px; /* Start slightly above the viewport */
+    width: 30px;
+    height: 30px;
+    animation: fall linear;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(calc(100vh + 50px)); /* Fall all the way down and out of view */
+    }
 }
