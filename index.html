@@ -7,18 +7,42 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Cookie Clicker</h1>
+    <div class="game-area">
+        <h1 id="game-title">Cookie Clicker</h1>
         <button id="cookie-btn">
-            <img src="images/money.png" alt="Cookie">
+            <img src="images/cookie.png" alt="Cookie">
         </button>
-        <p>Cookies: <span id="cookie-count">0</span></p>
-        <div class="upgrades">
-            <button id="upgrade-click" data-cost="10">Upgrade Click (+1 per click) - 10 cookies</button>
-            <button id="upgrade-auto" data-cost="50">Auto Clicker (1 cookie per second) - 50 cookies</button>
+        <div class="cookie-counter">
+            <p>Cookies</p>
+            <hr>
+            <p id="cookie-count">0</p>
+        </div>
+        <button id="toggle-upgrades" class="toggle-button">Upgrades</button>
+        <button id="toggle-investing" class="toggle-button" disabled>Investing</button>
+    </div>
+    <div class="upgrades-tab" id="upgrades-tab">
+        <div class="upgrades-container" id="upgrades-container">
+            <button id="upgrade-click" data-cost="10">Upgrade Click (+1 per click) - 10 cookies</button> <span id="upgrade-click-count">0</span>
+            <button id="upgrade-auto" data-cost="50">Auto Clicker (2 cookies per second) - 50 cookies</button> <span id="upgrade-auto-count">0</span>
+            <button id="upgrade-factory" data-cost="200">Cookie Factory (4 cookies per second) - 200 cookies</button> <span id="upgrade-factory-count">0</span>
+            <button id="upgrade-bakery" data-cost="1000">Cookie Bakery (20 cookies per second) - 1000 cookies</button> <span id="upgrade-bakery-count">0</span>
+            <button id="upgrade-farm" data-cost="5000">Cookie Farm (50 cookies per second) - 5000 cookies</button> <span id="upgrade-farm-count">0</span>
+            <button id="upgrade-mine" data-cost="20000">Cookie Mine (200 cookies per second) - 20000 cookies</button> <span id="upgrade-mine-count">0</span>
+            <button id="upgrade-lab" data-cost="100000">Cookie Lab (1000 cookies per second) - 100000 cookies</button> <span id="upgrade-lab-count">0</span>
+            <button id="upgrade-portal" data-cost="500000">Cookie Portal (5000 cookies per second) - 500000 cookies</button> <span id="upgrade-portal-count">0</span>
+            <button id="upgrade-universe" data-cost="2000000">Cookie Universe (20000 cookies per second) - 2000000 cookies</button> <span id="upgrade-universe-count">0</span>
+            <button id="upgrade-galaxy" data-cost="10000000">Cookie Galaxy (100000 cookies per second) - 10000000 cookies</button> <span id="upgrade-galaxy-count">0</span>
+            <button id="upgrade-dimension" data-cost="50000000">Cookie Dimension (500000 cookies per second) - 50000000 cookies</button> <span id="upgrade-dimension-count">0</span>
+            <button id="upgrade-time-machine" data-cost="200000000">Cookie Time Machine (1000000 cookies per second) - 200000000 cookies</button> <span id="upgrade-time-machine-count">0</span>
         </div>
     </div>
+    <div class="investing-tab" id="investing-tab">
+        <div class="investing-container" id="investing-container">
+            <h2>Investing</h2>
+            <!-- Add investing elements here -->
+        </div>
+    </div>
+    <div class="falling-cookies"></div>
     <script src="script.js"></script>
 </body>
 </html>
-
